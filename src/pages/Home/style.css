@@ -25,4 +25,5 @@
 .logo-container img{
     width: 70%;
     margin: 0 15%;
+    border-radius: 10px;
 }
