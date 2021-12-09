@@ -64,60 +64,62 @@ export default function NovoCliente() {
                                 placeholder="Nome"
                                 value={nome}
                                 onChange={e => setNome(e.target.value)}
+                                style={{ width: "45%" }}
                             />
                             <input
                                 placeholder="Sobrenome"
                                 value={sobrenome}
                                 onChange={e => setSobrenome(e.target.value)}
-                                style={{ width: 220 }}
+                                style={{ width: "45%" }}
 
                             />
                             <input
                                 placeholder="CPF"
                                 value={cpf}
                                 onChange={e => setCpf(e.target.value)}
+                                style={{ width: "45%" }}
                             />
                             <input
                                 placeholder="Sexo"
                                 value={sexo}
                                 onChange={e => setSexo(e.target.value)}
-                                style={{ width: 98 }}
+                                style={{ width: "20%" }}
                             />
 
                             <input
                                 placeholder="UF"
                                 value={uf}
                                 onChange={e => setUf(e.target.value)}
-                                style={{ width: 100 }}
+                                style={{ width: "20%" }}
                             />
 
                             <input
                                 placeholder="Endereço"
                                 value={endereco}
                                 onChange={e => setEndereco(e.target.value)}
-                                style={{ width: 422 }}
+                                style={{ width: "95%" }}
                             />
                             <input
                                 placeholder="Cidade"
                                 value={cidade}
                                 onChange={e => setCidade(e.target.value)}
-                                style={{ width: 180 }}
+                                style={{ width: "45%" }}
                             />
                             <input
                                 placeholder="Celular"
                                 value={celular}
                                 onChange={e => setCelular(e.target.value)}
-                                style={{ width: 218 }}
+                                style={{ width: "45%" }}
                             />
                             <input
                                 placeholder="E-mail"
                                 value={email}
                                 type="email"
                                 onChange={e => setEmail(e.target.value)}
-                                style={{ width: 422 }}
+                                style={{ width: "95%" }}
                             />
 
-                            <button className="button" style={{ width: 422}} >
+                            <button className="button" style={{ width: "95%"}} >
                                 Cadastrar
                             </button>
                         </form>

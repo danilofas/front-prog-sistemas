@@ -1,6 +1,7 @@
 .novo-cliente-container{
     display: flex;
     flex: 1;
+    justify-content: center;
 }
 
 .content{
