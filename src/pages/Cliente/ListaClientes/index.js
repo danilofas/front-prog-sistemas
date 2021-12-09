@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { FiTrash2 } from 'react-icons/fi'
+import { FiTrash2, FiRotateCcw } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
+import Barra from '../../../components/Barra'
+
+
 
 import "./style.css";
 
@@ -8,6 +12,7 @@ import api from "../../../services/api"
 export default function ListaClientes() {
 
     const [clientes, setClientes] = useState([]);
+    const navegacao = useNavigate()
 
     useEffect(() => {
         api.get('/cliente/listar').then(response => {
@@ -18,14 +23,22 @@ export default function ListaClientes() {
     async function deletarCliente(id){  
         try {
             await api.delete(`/cliente/apagar/${id}`)
-            setClientes(clientes.filter(clientes => clientes.id != id))
+            setClientes(clientes.filter(clientes => clientes.id !== id))
         } catch (error) {
             alert('Erro ao apagar o cliente, tente outra vez.')
         }
     }
 
+    function selecionarCliente(id){
+        localStorage.setItem('idCliente', id)
+        navegacao('/cliente/atualizar')
+    }
+
     return (
         <div className="lista-clientes-container">
+            <div className="menu">
+                <Barra/>
+            </div>
             <div className="content-lista">
                 <div className="titulo-lista-clientes">
                     <h1>Relatório de clientes</h1>
@@ -41,7 +54,8 @@ export default function ListaClientes() {
                                 <th>Cidade</th>
                                 <th>Celular</th>
                                 <th>E-mail</th>
-                                <th>Apagar?</th>
+                                <th>Atualizar</th>
+                                <th>Apagar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,8 +70,13 @@ export default function ListaClientes() {
                                         <td>{cliente.celular}</td>
                                         <td>{cliente.email}</td>
                                         <td>
-                                            <button type="button" onClick={ () => deletarCliente(cliente.id)}>
-                                                <FiTrash2 size={20} color="red"/>
+                                            <button type="button" onClick={ () => selecionarCliente(cliente.id)} id="button-update">
+                                                <FiRotateCcw size={20} color="green" />
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button type="button" onClick={ () => deletarCliente(cliente.id)} id="button-delete">
+                                                <FiTrash2 size={20} color="red" />
                                             </button>
                                         </td>
                                     </tr>

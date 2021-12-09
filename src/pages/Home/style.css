@@ -7,14 +7,18 @@
 }
 
 .titulo-app{
-    margin-top: 200px;
+    margin-top: 30px;
     margin-bottom: 50px;
 }
 
 .titulo-app h1{
     font-size: 30px;
-    color: pink;
-    box-shadow: 1px 15px 15px 8px;
+    color: rgb(82, 13, 24);
+}
+
+.menu{
+    width: 70%;
+    margin: 0 15%;
 }
 
 .logo-container{
@@ -23,7 +27,6 @@
 }
 
 .logo-container img{
-    width: 70%;
-    margin: 0 15%;
+    margin: 0 20%;
     border-radius: 10px;
 }

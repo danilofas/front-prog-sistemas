@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../../../services/api'
 import { FiArrowLeftCircle } from "react-icons/fi";
 import { Link, useNavigate } from 'react-router-dom';
-import Barra from '../../../components/Barra' 
-
 
 import './style.css'
 
@@ -22,10 +20,30 @@ export default function NovoCliente() {
     const [celular, setCelular] = useState('')
 
     const navegacao = useNavigate();
+    const id = localStorage.getItem('idCliente')
 
-    async function executarCadastro(e){
+    useEffect( () => {
+
+        try {
+            api.get(`cliente/busca/${id}`).then( response => {
+                setNome(response.data[0].nome)
+                setSobrenome(response.data[0].sobrenome)
+                setCpf(response.data[0].cpf)
+                setSexo(response.data[0].sexo)
+                setEndereco(response.data[0].endereco)
+                setCidade(response.data[0].cidade)
+                setUf(response.data[0].uf)
+                setEmail(response.data[0].email)
+                setCelular(response.data[0].celular)
+            })
+        } catch (error) {
+            
+        }
+    }, [id]);
+
+    async function executarAtualizacao(e){
         e.preventDefault();
-        
+                       
         const dados = {
             nome,
             sobrenome,
@@ -39,20 +57,15 @@ export default function NovoCliente() {
         }
 
         try {
-            const response = await api.post('/cliente/cadastro', dados)
-            alert(`Seja bem-vindo. Seu id de acesso é ${response.data}`)
-            navegacao('/')
+            await api.put(`/cliente/atualizar/${id}`, dados)
+            alert('Dados atualizados com sucesso')
+            navegacao('/cliente/lista')
         } catch (error) {
-            alert('Erro ao tentar cadastrar. Tente novamente.')
+            alert('Erro ao tentar atualizar. Tente novamente.')
         }
     }
-
-
     return (
         <div className="novo-cliente-container">
-            <div className="menu">
-                <Barra/>
-            </div>
             <div className="content">
                 <section className="cliente-form">
                     <section className="logo-carrinho-compras">
@@ -63,8 +76,8 @@ export default function NovoCliente() {
                         </Link>
                     </section>
                     <section className="form-cadastro-cliente">
-                        <h1>Cadastro de clientes</h1>
-                        <form onSubmit={executarCadastro}>
+                        <h1>Atualizar cliente</h1>
+                        <form onSubmit={executarAtualizacao}>
                             <input
                                 placeholder="Nome"
                                 value={nome}
@@ -83,6 +96,7 @@ export default function NovoCliente() {
                                 value={cpf}
                                 onChange={e => setCpf(e.target.value)}
                                 style={{ width: "45%" }}
+                                readOnly
                             />
                             <input
                                 placeholder="Sexo"
@@ -122,10 +136,11 @@ export default function NovoCliente() {
                                 type="email"
                                 onChange={e => setEmail(e.target.value)}
                                 style={{ width: "95%" }}
+                                readOnly
                             />
 
                             <button className="button" style={{ width: "95%"}} >
-                                Cadastrar
+                                Atualizar
                             </button>
                         </form>
                     </section>
