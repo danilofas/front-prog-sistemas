@@ -66,8 +66,8 @@ export default function NovoCliente() {
     }
     return (
         <div className="novo-cliente-container">
-            <div className="content">
-                <section className="cliente-form">
+            <div className="content-atualizar">
+                <section className="cliente-form-atualizar">
                     <section className="logo-carrinho-compras">
                         <img src={CarrinhoCompras} alt="Carrinho de compras" style={{ width: '100%' }} />
 

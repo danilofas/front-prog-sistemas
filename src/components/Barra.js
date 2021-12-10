@@ -25,9 +25,6 @@ export default function Barra() {
                 <NavItem href="/">
                     Home
                 </NavItem>
-                <NavItem href="components.html">
-                    Components
-                </NavItem>
                 <Dropdown
                     id="Dropdown_14"
                     options={{
@@ -53,10 +50,32 @@ export default function Barra() {
                     <Link to="/cliente/lista">
                         Lista
                     </Link>
-                    <Divider />
-                    <a href="#">
-                        three
-                    </a>
+                </Dropdown>
+                <Dropdown
+                    id="Dropdown_15"
+                    options={{
+                        alignment: 'left',
+                        autoTrigger: true,
+                        closeOnClick: true,
+                        constrainWidth: true,
+                        container: null,
+                        coverTrigger: true,
+                        hover: false,
+                        inDuration: 150,
+                        onCloseEnd: null,
+                        onCloseStart: null,
+                        onOpenEnd: null,
+                        onOpenStart: null,
+                        outDuration: 250
+                    }}
+                    trigger={<a href="#!">Produto{' '}<Icon right>arrow_drop_down</Icon></a>}
+                >
+                    <Link to="/produto/cadastro">
+                        Cadastro
+                    </Link>
+                    <Link to="/produto/lista">
+                        Lista
+                    </Link>
                 </Dropdown>
             </Navbar>
         </div>

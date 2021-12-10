@@ -5,6 +5,8 @@ import Home from './pages/Home/index.js';
 import NovoCliente from './pages/Cliente/NovoCliente/index.js'
 import ListaClientes from './pages/Cliente/ListaClientes/index'
 import AtualizaCliente from './pages/Cliente/AtualizaCliente/index'
+import NovoProduto from './pages/Produto/Cadastro/index'
+import ListaProdutos from './pages/Produto/ListaProdutos/index'
 
 export default function Rotas(){
     return(
@@ -14,6 +16,8 @@ export default function Rotas(){
                 <Route path="/cliente/cadastro" element={<NovoCliente/>}/>
                 <Route path="/cliente/lista" element={<ListaClientes/>}/>
                 <Route path="/cliente/atualizar" element={<AtualizaCliente/>}/>
+                <Route path="/produto/cadastro" element={<NovoProduto/>}/>
+                <Route path="/produto/lista" element={<ListaProdutos/>}/>
             </Routes>
         </BrowserRouter>
 
